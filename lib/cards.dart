@@ -1,67 +1,113 @@
 
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_app/data/locationsAll.dart';
 import 'package:flutter_app/models/Location.dart';
+
+import 'form.dart';
 import 'main.dart';
 
+class cards extends StatefulWidget {
+  locationsAll NewList;
+
+  cards({Key key,@required  this.NewList}) : super( key : key);
 
 
-class cards extends StatelessWidget  {
+  @override
+  _cardsState createState() => _cardsState(NewList);
+}
+
+class _cardsState extends State<cards> {
+
+  _cardsState( this.NewList) ;
+  locationsAll NewList ;
 
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: Colors.black12,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        title: Text("fav Locations"),
+      ),
 
-        appBar: AppBar(
-          title: Text("fav Locations"),
-        ),
 
-
-        body: ListView.builder(
-            itemCount: locationsAll().listobj.length,
+      body:Padding(
+        padding: const EdgeInsets.all(5),
+        child : ListView.builder(
+            itemCount: NewList.listobj.length,
             itemBuilder: (BuildContext context,int index){
 
+              return GestureDetector(
 
-          return GestureDetector(
+                onTap: (){
+                  print(NewList.listobj[index].imageUrl);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ThirdRoute (data:NewList.listobj[index])),
+                  );
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      side: BorderSide(color: Colors.black54, width: 5),
+                      borderRadius: BorderRadius.circular(0)
+                  ),
+                  color: Colors.transparent,
+                  elevation:0,
+                  child: Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 70,horizontal: 20),
+                          child: Column(
+                            children: <Widget> [
+                              //Image.network(NewList.listobj[index].imageUrl),
+                              SizedBox(height: 20.0),
+                              Text(NewList.listobj[index].name,
 
-            onTap: (){ Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ThirdRoute (data:locationsAll().listobj[index])),
-            );
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 25.0,
+                                    color:Colors.white
+                                ),
+                              ),
+                              SizedBox(height: 7.0),
+                              Text(NewList.listobj[index].theme,
+                                  style: TextStyle(
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.bold,
+                                    color:Colors.white ,
+                                  )
+                              )
+                            ],
+                          ),
+                        ),
+                        Ink.image(image:
+                        NetworkImage(NewList.listobj[index].imageUrl),
+                          height: 210,
+                          fit: BoxFit.cover,
+                        ),
 
-            },
-            child: Card(
-              elevation: 10,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 40),
-                child: Column(
-                  children: <Widget> [
-                    Image.network(locationsAll().listobj[index].imageUrl),
-                    SizedBox(height: 20.0),
-                    Text(locationsAll().listobj[index].name,
-                      style: TextStyle(
-                        fontSize: 20.0
-                      ),
-                    ),
-                    SizedBox(height: 13.0),
-                Text(locationsAll().listobj[index].theme,
-                  style: TextStyle(
-                      fontSize: 16.0,
-                    color:Colors.grey[600] ,
-                  )
-                )
-                  ],
+                      ]
+                  ),
                 ),
-              ),
-            ),
-          );
+              );
 
 
             }
-        )
+        ),
+
+      ),
+
+      floatingActionButton: FloatingActionButton(  onPressed: ()  {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => form(NewList:NewList)),
+        );
+      },
+
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.black54,
+      ),
 
     );
   }

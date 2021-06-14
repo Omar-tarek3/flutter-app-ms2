@@ -1,5 +1,7 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/data/locationsAll.dart';
 import 'package:flutter_app/models/Location.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -14,32 +16,73 @@ void main() => runApp(MaterialApp(
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    locationsAll NewList ;
+    NewList=locationsAll();
+
     return Scaffold(
     appBar: AppBar(
+      elevation: 0,
+      backgroundColor: Colors.blue,
     title: Text('my app'),
     ) ,
-    body: Column(
-    children: [
-    TextFormField(
-    decoration: const InputDecoration(
-    hintText: 'user name',
-    ),
-    ),
-    TextFormField(
-    decoration: const InputDecoration(
-    hintText: 'password',
-    ),
-    ),
-    ElevatedButton(
-    child: Text('press me'),
-    onPressed: (){
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => cards()),
-      );
-    },
+    body:Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Colors.blue,
+            Colors.purpleAccent,
+            Colors.purple,
+          ],
+          stops: [
+            0.3,
+            0.7,
+            1,
+          ],
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+        )
+      ),
+        child :Padding(padding: const EdgeInsets.all(20.0),
+            child:Column(
+              children: [
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black54),
+                        borderRadius: BorderRadius.all(Radius.circular(30))
+                    ),
+                    hintText: 'user name',
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderSide: BorderSide(color: Colors.black54),
+                        borderRadius: BorderRadius.all(Radius.circular(30))
+                    ),
+                    hintText: 'password',
+                  ),
+                ),
+                SizedBox(height: 20.0),
+                ElevatedButton(
+                  child: Text('press me'),
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => cards(NewList: NewList)),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black54
+
+                  ),
+                )
+
+              ],
+
     )
-    ],
+    )
     )
     );
   }
@@ -48,39 +91,61 @@ class Home extends StatelessWidget {
 class ThirdRoute extends StatelessWidget {
   final Location data;
 
-
-
   ThirdRoute({Key Key, this.data}) : super(key : Key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.blue,
         title: Text("Details"),
         ),
-      body: Column(
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Colors.blue,
+                Colors.purpleAccent,
+                Colors.purple,
+              ],
+              stops: [
+                0.3,
+                0.7,
+                1,
+              ],
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+            )
+        ),
+      child : ListView(
         children: [
           Text(data.name,
+            textAlign:TextAlign.center,
             style: TextStyle(
                 fontSize: 35.0,
-              fontWeight: FontWeight.bold
+              fontWeight: FontWeight.bold,
+
             ),
       ),
           SizedBox(height: 20.0),
-          Image.network(data.imageUrl),
+          Padding(padding: const EdgeInsets.all(17.0),
+            child :Image.network(data.imageUrl),),
           SizedBox(height: 20.0),
-          Text(data.description,
-            style: TextStyle(
-              fontSize: 15.0,
-            )
 
-          ),
+        Padding(padding: const EdgeInsets.all(10.0),
+          child:Text(data.description,
+            style: TextStyle(
+              fontSize: 19.0,)),),
 
         ],
       ),
+      ),
+
       floatingActionButton: FloatingActionButton(  onPressed: () => {
         launch(data.locationUrl)
       },
         child: const Icon(Icons.location_on_sharp),
+        backgroundColor: Colors.black54,
       ),
     );
 

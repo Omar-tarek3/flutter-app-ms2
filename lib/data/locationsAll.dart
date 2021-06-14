@@ -51,7 +51,8 @@ class locationsAll {
         "The Luxor Temple (Arabic: معبد الاقصر) is a large Ancient Egyptian temple complex located on the east bank of the Nile River in the city today known as Luxor (ancient Thebes) and was constructed approximately 1400 BCE. In the Egyptian language it is known as ipet resyt, 'the southern sanctuary'. In Luxor there are several great temples on the east and west banks. Four of the major mortuary temples visited by early travelers include the Temple of Seti I at Gurnah, the Temple of Hatshepsut at Deir el Bahri, the Temple of Ramesses II (i.e., Ramesseum), and the Temple of Ramesses III at Medinet Habu. The two primary cults' temples on the east bank are known as the Karnak and Luxor.[1] Unlike the other temples in Thebes, Luxor temple is not dedicated to a cult god or a deified version of the pharaoh in death. Instead, Luxor temple is dedicated to the rejuvenation of kingship; it may have been where many of the pharaohs of Egypt were crowned in reality or conceptually (as in the case of Alexander the Great, who claimed he was crowned at Luxor but may never have traveled south of Memphis, near modern Cairo).",
         theme: "pharaonic",
         imageUrl:
-        "http://justfunfacts.com/wp-content/uploads/2016/08/luxor-temple-colonnade.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/e/e3/Kheops-Pyramid.jpg",
+        //"http://justfunfacts.com/wp-content/uploads/2016/08/luxor-temple-colonnade.jpg",
         locationUrl:
         "https://www.google.com/maps/place/Luxor+Temple/@25.6995068,32.6368622,17z/data=!3m1!4b1!4m5!3m4!1s0x144915c41edadf61:0x7693895c346c7d81!8m2!3d25.699502!4d32.6390509"),
   ];
