@@ -115,8 +115,10 @@ class ThirdRoute extends StatelessWidget {
               ],
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
+            )
+        ),
 
-      child : ListView(
+    child : ListView(
         children: [
           Text(data.name,
             textAlign:TextAlign.center,
